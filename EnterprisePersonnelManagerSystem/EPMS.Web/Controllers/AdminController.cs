@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using EPMS.Model;
 using EPMS.Model.Dto.Admin;
 using EPMS.Service.Services.AdminService;
+using EPMS.Web.ActionFilter;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -67,9 +68,29 @@ namespace EPMS.Web.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
+        [Route("Login")]
         public async Task<IActionResult> Login(LoginDto model)
         {
             var result = await _service.Login(model);
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// 更新Token
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("UpdateTokenById")]
+        public async Task<IActionResult> UpdateTokenById(int id)
+        {
+            var result = new ControllerReturnData<string>();
+            var r  = await _service.UpdateToken(id);
+            if(r.Item1)
+            {
+                result.Success = true;
+                result.Obj = r.Item2;
+            }
             return Ok(result);
         }
 

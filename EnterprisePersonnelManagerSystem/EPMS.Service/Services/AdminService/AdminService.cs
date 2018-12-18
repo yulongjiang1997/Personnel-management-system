@@ -26,7 +26,7 @@ namespace EPMS.Service.Services.AdminService
         /// <returns></returns>
         public async Task<ReturnLoginDto> Login(LoginDto model)
         {
-            var token = MD5Encrypt32(model.NameOrEmail + model.Password + DateTime.Now.ToString());
+            (bool, string) result=(false,"");
             var admin = await _context.Admins.FirstOrDefaultAsync(i =>
             (i.Email == model.NameOrEmail
             || i.Name == model.NameOrEmail)
@@ -34,26 +34,9 @@ namespace EPMS.Service.Services.AdminService
             if (admin != null)
             {
                 //如果登陆成功则更新token 然后把用户名和token 一起返回每次操作验证token有效性
-                var loginInfo = await _context.LoginInfos.FirstOrDefaultAsync(i => i.Admin.Id == admin.Id);
-                if (loginInfo != null)
-                {
-                    loginInfo.OutTime = DateTime.Now.AddMinutes(30);
-                    loginInfo.LastUpTime = DateTime.Now;
-                    loginInfo.Token = token;
-                }
-                else
-                {
-                    _context.LoginInfos.Add(new LoginInfo
-                    {
-                        Admin = admin,
-                        CreateTime = DateTime.Now,
-                        OutTime = DateTime.Now.AddMinutes(30),
-                        Token = token
-                    });
-                }
-                await _context.SaveChangesAsync();
+                 result = await UpdateToken(admin.Id);
             }
-            return admin != null ? new ReturnLoginDto { Name = admin.Name, Token = token } : null;
+            return admin != null&& result.Item1? new ReturnLoginDto { Name = admin.Name, Token = result.Item2 } : null;
 
         }
 
@@ -182,11 +165,44 @@ namespace EPMS.Service.Services.AdminService
         /// </summary>
         /// <param name="adminId"></param>
         /// <returns></returns>
-        public async Task<bool> CheckTokenTimeOut(string email,string token)
+        public bool CheckTokenTimeOut(string email, string token)
         {
-            var result = await _context.LoginInfos.FirstOrDefaultAsync(i => i.Admin.Email == email && i.OutTime > DateTime.Now&&i.Token==token);
-            return  result != null;
+            var result = _context.LoginInfos.FirstOrDefault(i => i.Admin.Email == email && i.OutTime > DateTime.Now && i.Token == token);
+            return result != null;
         }
 
+        /// <summary>
+        /// 更新token
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<(bool, string)> UpdateToken(int id)
+        {
+            var admin = _context.Admins.FirstOrDefault(i => i.Id == id);
+            if(admin==null)
+            {
+                //如果查询不到管理员的ID则不更新且返回false
+                return (false, "");
+            }
+            var token = MD5Encrypt32(admin.Name+admin.Email + admin.PassWord + DateTime.Now.ToString());
+            var loginInfo = await _context.LoginInfos.FirstOrDefaultAsync(i => i.Admin.Id == id);
+            if (loginInfo != null)
+            {
+                loginInfo.OutTime = DateTime.Now.AddMinutes(30);
+                loginInfo.LastUpTime = DateTime.Now;
+                loginInfo.Token = token;
+            }
+            else
+            {
+                _context.LoginInfos.Add(new LoginInfo
+                {
+                    Admin = admin,
+                    CreateTime = DateTime.Now,
+                    OutTime = DateTime.Now.AddMinutes(30),
+                    Token = token
+                });
+            }
+            return (await _context.SaveChangesAsync() > 0, token);
+        }
     }
 }

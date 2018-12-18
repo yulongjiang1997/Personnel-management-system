@@ -12,6 +12,7 @@ using EPMS.Web.ActionFilter;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -55,16 +56,18 @@ namespace EPMS.Web
                 options.IncludeXmlComments(xmlPath);
             });
             services.AddDbContextPool<EPMSContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlServer")));
-            services.AddMvc(options => { options.Filters.Add(typeof(PermissionActionFillter)); });
+            services.AddMvc(options => { options.Filters.Add(typeof(PermissionActionFillter)); });//权限检查
+            services.AddMvc(options => { options.Filters.Add(typeof(ExceptionFiltering)); });
 
             #region 依赖注入添加
-            services.AddTransient<IAdminService,AdminService>();
+            services.AddTransient<IAdminService, AdminService>();
+            services.AddTransient<BaseService>();
             //services.AddTransient<AttendanceService>();
-           //services.AddTransient<AttendanceTimeSetService>();
+            //services.AddTransient<AttendanceTimeSetService>();
             //services.AddTransient<DepartmentService>();
-           // services.AddTransient<PositionService>();
-           // services.AddTransient<SalaryService>();
-           // services.AddTransient<StaffInfoService>();
+            // services.AddTransient<PositionService>();
+            // services.AddTransient<SalaryService>();
+            // services.AddTransient<StaffInfoService>();
             #endregion
         }
 

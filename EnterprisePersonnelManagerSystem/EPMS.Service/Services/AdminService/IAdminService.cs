@@ -9,11 +9,18 @@ namespace EPMS.Service.Services.AdminService
     public interface IAdminService
     {
         /// <summary>
+        /// 更新token
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Task<(bool, string)> UpdateToken(int id);
+
+        /// <summary>
         /// 检查Token
         /// </summary>
         /// <param name="adminId"></param>
         /// <returns></returns>
-        Task<bool> CheckTokenTimeOut(string email,string token);
+        bool CheckTokenTimeOut(string email,string token);
 
         /// <summary>
         /// 登陆
