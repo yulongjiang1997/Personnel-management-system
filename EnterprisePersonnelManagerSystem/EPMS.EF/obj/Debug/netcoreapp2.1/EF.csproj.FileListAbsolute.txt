@@ -1,0 +1,12 @@
+E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EF\bin\Debug\netcoreapp2.1\EF.deps.json
+E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EF\bin\Debug\netcoreapp2.1\EF.dll
+E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EF\bin\Debug\netcoreapp2.1\EF.pdb
+E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EF\bin\Debug\netcoreapp2.1\Model.dll
+E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EF\bin\Debug\netcoreapp2.1\Model.pdb
+E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EF\obj\Debug\netcoreapp2.1\EF.csprojAssemblyReference.cache
+E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EF\obj\Debug\netcoreapp2.1\EF.csproj.CoreCompileInputs.cache
+E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EF\obj\Debug\netcoreapp2.1\EF.AssemblyInfoInputs.cache
+E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EF\obj\Debug\netcoreapp2.1\EF.AssemblyInfo.cs
+E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EF\obj\Debug\netcoreapp2.1\EF.csproj.CopyComplete
+E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EF\obj\Debug\netcoreapp2.1\EF.dll
+E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EF\obj\Debug\netcoreapp2.1\EF.pdb

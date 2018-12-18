@@ -1,0 +1,14 @@
+E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EPMS.Service\bin\Debug\netcoreapp2.1\EPMS.Service.deps.json
+E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EPMS.Service\bin\Debug\netcoreapp2.1\EPMS.Service.dll
+E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EPMS.Service\bin\Debug\netcoreapp2.1\EPMS.Service.pdb
+E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EPMS.Service\bin\Debug\netcoreapp2.1\EPMS.EF.dll
+E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EPMS.Service\bin\Debug\netcoreapp2.1\EPMS.Model.dll
+E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EPMS.Service\bin\Debug\netcoreapp2.1\EPMS.EF.pdb
+E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EPMS.Service\bin\Debug\netcoreapp2.1\EPMS.Model.pdb
+E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EPMS.Service\obj\Debug\netcoreapp2.1\EPMS.Service.csprojAssemblyReference.cache
+E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EPMS.Service\obj\Debug\netcoreapp2.1\EPMS.Service.csproj.CoreCompileInputs.cache
+E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EPMS.Service\obj\Debug\netcoreapp2.1\EPMS.Service.AssemblyInfoInputs.cache
+E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EPMS.Service\obj\Debug\netcoreapp2.1\EPMS.Service.AssemblyInfo.cs
+E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EPMS.Service\obj\Debug\netcoreapp2.1\EPMS.Service.csproj.CopyComplete
+E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EPMS.Service\obj\Debug\netcoreapp2.1\EPMS.Service.dll
+E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EPMS.Service\obj\Debug\netcoreapp2.1\EPMS.Service.pdb

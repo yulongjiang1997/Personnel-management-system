@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EPMS.Web</name>
+    </assembly>
+    <members>
+        <member name="M:EPMS.Web.Controllers.AdminController.Create(EPMS.Model.Dto.Admin.AdminAddOrEditDto)">
+            <summary>
+            添加管理员
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.AdminController.Edit(EPMS.Model.Dto.Admin.AdminAddOrEditDto,System.Int32)">
+            <summary>
+            编辑管理员
+            </summary>
+            <param name="model"></param>
+             <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.AdminController.Delete(System.Int32)">
+            <summary>
+            删除管理员
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.AdminController.Login(EPMS.Model.Dto.Admin.LoginDto)">
+            <summary>
+            管理员登陆
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EPMS.Web.Startup">
+            <summary>
+            Startup类
+            </summary>
+        </member>
+        <member name="M:EPMS.Web.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="configuration"></param>
+        </member>
+    </members>
+</doc>
