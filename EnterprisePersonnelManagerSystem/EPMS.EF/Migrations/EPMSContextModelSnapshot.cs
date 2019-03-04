@@ -15,15 +15,17 @@ namespace EPMS.EF.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
+                .HasAnnotation("ProductVersion", "2.1.8-servicing-32085")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("EPMS.Model.Model.Admin", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Account")
+                        .HasMaxLength(30);
 
                     b.Property<DateTime>("CreateTime")
                         .HasMaxLength(30);
@@ -51,11 +53,12 @@ namespace EPMS.EF.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("AttendanceTime")
-                        .HasMaxLength(30);
-
                     b.Property<DateTime>("CreateTime")
                         .HasMaxLength(30);
+
+                    b.Property<bool>("IsLate");
+
+                    b.Property<bool>("IsLeaveEarly");
 
                     b.Property<DateTime?>("LastUpTime")
                         .HasMaxLength(30);
@@ -63,7 +66,7 @@ namespace EPMS.EF.Migrations
                     b.Property<DateTime?>("OffworkTime")
                         .HasMaxLength(30);
 
-                    b.Property<int?>("StaffInfoId");
+                    b.Property<int>("StaffInfoId");
 
                     b.Property<DateTime>("WorkingTime")
                         .HasMaxLength(30);
@@ -98,6 +101,29 @@ namespace EPMS.EF.Migrations
                     b.ToTable("AttendanceTimeSets");
                 });
 
+            modelBuilder.Entity("EPMS.Model.Model.CompanySchedule", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasMaxLength(30);
+
+                    b.Property<string>("EventDetails");
+
+                    b.Property<string>("EventName");
+
+                    b.Property<DateTime?>("LastUpTime")
+                        .HasMaxLength(30);
+
+                    b.Property<DateTime>("ScheduleTime");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CompanySchedules");
+                });
+
             modelBuilder.Entity("EPMS.Model.Model.Department", b =>
                 {
                     b.Property<int>("Id")
@@ -118,13 +144,63 @@ namespace EPMS.EF.Migrations
                     b.ToTable("Departments");
                 });
 
+            modelBuilder.Entity("EPMS.Model.Model.InAndOutStockDetailed", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasMaxLength(30);
+
+                    b.Property<int>("InAndOutStockType");
+
+                    b.Property<DateTime?>("LastUpTime")
+                        .HasMaxLength(30);
+
+                    b.Property<int>("Number");
+
+                    b.Property<int>("StockId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StockId");
+
+                    b.ToTable("InAndOutStockDetaileds");
+                });
+
+            modelBuilder.Entity("EPMS.Model.Model.Log", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AdminId");
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasMaxLength(30);
+
+                    b.Property<DateTime?>("LastUpTime")
+                        .HasMaxLength(30);
+
+                    b.Property<string>("OperationData");
+
+                    b.Property<string>("OperationEvent");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AdminId");
+
+                    b.ToTable("Logs");
+                });
+
             modelBuilder.Entity("EPMS.Model.Model.LoginInfo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AdminId");
+                    b.Property<string>("AdminId");
 
                     b.Property<DateTime>("CreateTime")
                         .HasMaxLength(30);
@@ -143,6 +219,33 @@ namespace EPMS.EF.Migrations
                     b.ToTable("LoginInfos");
                 });
 
+            modelBuilder.Entity("EPMS.Model.Model.PersonalSchedule", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasMaxLength(30);
+
+                    b.Property<string>("EventDetails");
+
+                    b.Property<string>("EventName");
+
+                    b.Property<DateTime?>("LastUpTime")
+                        .HasMaxLength(30);
+
+                    b.Property<DateTime>("ScheduleTime");
+
+                    b.Property<int>("StaffId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StaffId");
+
+                    b.ToTable("PersonalSchedules");
+                });
+
             modelBuilder.Entity("EPMS.Model.Model.Position", b =>
                 {
                     b.Property<int>("Id")
@@ -152,7 +255,7 @@ namespace EPMS.EF.Migrations
                     b.Property<DateTime>("CreateTime")
                         .HasMaxLength(30);
 
-                    b.Property<int?>("DepartmentId");
+                    b.Property<int>("DepartmentId");
 
                     b.Property<DateTime?>("LastUpTime")
                         .HasMaxLength(30);
@@ -167,17 +270,11 @@ namespace EPMS.EF.Migrations
                     b.ToTable("Positions");
                 });
 
-            modelBuilder.Entity("EPMS.Model.Model.Salary", b =>
+            modelBuilder.Entity("EPMS.Model.Model.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<double>("AttendanceRewardAndPunishment")
-                        .HasMaxLength(20);
-
-                    b.Property<double>("BasicSalary")
-                        .HasMaxLength(20);
 
                     b.Property<DateTime>("CreateTime")
                         .HasMaxLength(30);
@@ -185,16 +282,50 @@ namespace EPMS.EF.Migrations
                     b.Property<DateTime?>("LastUpTime")
                         .HasMaxLength(30);
 
-                    b.Property<double>("MealSubsidy")
+                    b.Property<string>("Name")
                         .HasMaxLength(20);
+
+                    b.Property<string>("Number");
+
+                    b.Property<double>("Price")
+                        .HasMaxLength(7);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("EPMS.Model.Model.Salary", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("BasicSalary")
+                        .HasMaxLength(7);
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasMaxLength(30);
+
+                    b.Property<double>("Deduction")
+                        .HasMaxLength(7);
+
+                    b.Property<DateTime?>("LastUpTime")
+                        .HasMaxLength(30);
+
+                    b.Property<double>("MealSubsidy")
+                        .HasMaxLength(7);
 
                     b.Property<double>("OtherSubsidies")
-                        .HasMaxLength(20);
+                        .HasMaxLength(7);
 
-                    b.Property<int?>("StaffInfoId");
+                    b.Property<double>("Reward")
+                        .HasMaxLength(7);
+
+                    b.Property<int>("StaffInfoId");
 
                     b.Property<double>("TransportationSubsidy")
-                        .HasMaxLength(20);
+                        .HasMaxLength(7);
 
                     b.HasKey("Id");
 
@@ -225,12 +356,14 @@ namespace EPMS.EF.Migrations
                         .HasMaxLength(50);
 
                     b.Property<string>("Phone")
-                        .HasMaxLength(14);
+                        .HasMaxLength(11);
 
-                    b.Property<int?>("PositionId");
+                    b.Property<int>("PositionId");
 
                     b.Property<DateTime?>("ResignationTime")
                         .HasMaxLength(30);
+
+                    b.Property<int>("WorkingStatus");
 
                     b.HasKey("Id");
 
@@ -239,39 +372,97 @@ namespace EPMS.EF.Migrations
                     b.ToTable("StaffInfos");
                 });
 
+            modelBuilder.Entity("EPMS.Model.Model.Stock", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasMaxLength(30);
+
+                    b.Property<DateTime?>("LastUpTime")
+                        .HasMaxLength(30);
+
+                    b.Property<int>("PrductId");
+
+                    b.Property<int>("SurplusStock");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PrductId");
+
+                    b.ToTable("Stocks");
+                });
+
             modelBuilder.Entity("EPMS.Model.Model.Attendance", b =>
                 {
                     b.HasOne("EPMS.Model.Model.StaffInfo", "StaffInfo")
-                        .WithMany("Attendances")
-                        .HasForeignKey("StaffInfoId");
+                        .WithMany()
+                        .HasForeignKey("StaffInfoId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("EPMS.Model.Model.InAndOutStockDetailed", b =>
+                {
+                    b.HasOne("EPMS.Model.Model.Stock", "Stock")
+                        .WithMany()
+                        .HasForeignKey("StockId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("EPMS.Model.Model.Log", b =>
+                {
+                    b.HasOne("EPMS.Model.Model.Admin", "Admin")
+                        .WithMany()
+                        .HasForeignKey("AdminId");
                 });
 
             modelBuilder.Entity("EPMS.Model.Model.LoginInfo", b =>
                 {
                     b.HasOne("EPMS.Model.Model.Admin", "Admin")
-                        .WithMany("LoginInfos")
+                        .WithMany()
                         .HasForeignKey("AdminId");
+                });
+
+            modelBuilder.Entity("EPMS.Model.Model.PersonalSchedule", b =>
+                {
+                    b.HasOne("EPMS.Model.Model.StaffInfo", "StaffInfo")
+                        .WithMany()
+                        .HasForeignKey("StaffId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("EPMS.Model.Model.Position", b =>
                 {
                     b.HasOne("EPMS.Model.Model.Department", "Department")
                         .WithMany()
-                        .HasForeignKey("DepartmentId");
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("EPMS.Model.Model.Salary", b =>
                 {
                     b.HasOne("EPMS.Model.Model.StaffInfo", "StaffInfo")
-                        .WithMany("Salarys")
-                        .HasForeignKey("StaffInfoId");
+                        .WithMany()
+                        .HasForeignKey("StaffInfoId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("EPMS.Model.Model.StaffInfo", b =>
                 {
                     b.HasOne("EPMS.Model.Model.Position", "Position")
-                        .WithMany("StaffInfos")
-                        .HasForeignKey("PositionId");
+                        .WithMany()
+                        .HasForeignKey("PositionId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("EPMS.Model.Model.Stock", b =>
+                {
+                    b.HasOne("EPMS.Model.Model.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("PrductId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

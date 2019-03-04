@@ -5,8 +5,9 @@ using System.Text;
 
 namespace EPMS.Model.Model
 {
-    public class LoginInfo:BaseModel
+    public class LoginInfo : BaseModel
     {
+        public string AdminId { get; set; }
         [ForeignKey("AdminId")]
         public Admin Admin { get; set; }
         public string Token { get; set; }

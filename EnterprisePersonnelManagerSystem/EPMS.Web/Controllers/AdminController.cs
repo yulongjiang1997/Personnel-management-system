@@ -42,7 +42,7 @@ namespace EPMS.Web.Controllers
         /// <returns></returns>
         [HttpPut]
         [Route("Edit")]
-        public async Task<IActionResult> Edit(AdminAddOrEditDto model, int id)
+        public async Task<IActionResult> Edit(AdminAddOrEditDto model, string id)
         {
             var result = await _service.Edit(model, id);
             return Ok(result);
@@ -55,7 +55,7 @@ namespace EPMS.Web.Controllers
         /// <returns></returns>
         [HttpDelete]
         [Route("Delete")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(string id)
         {
             var result = await _service.Delete(id);
             return Ok(result);

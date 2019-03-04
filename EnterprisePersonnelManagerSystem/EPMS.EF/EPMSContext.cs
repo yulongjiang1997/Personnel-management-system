@@ -18,5 +18,11 @@ namespace EF
         public DbSet<AttendanceTimeSet> AttendanceTimeSets { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<LoginInfo> LoginInfos { get; set; }
+        public DbSet<CompanySchedule> CompanySchedules { get; set; }
+        public DbSet<PersonalSchedule> PersonalSchedules { get; set; }
+        public DbSet<Log> Logs { get; set; }
+        public DbSet<Stock> Stocks { get; set; }
+        public DbSet<InAndOutStockDetailed> InAndOutStockDetaileds { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 }

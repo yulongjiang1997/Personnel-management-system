@@ -12,3 +12,17 @@ E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EPMS.Servi
 E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EPMS.Service\obj\Debug\netcoreapp2.1\EPMS.Service.csproj.CopyComplete
 E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EPMS.Service\obj\Debug\netcoreapp2.1\EPMS.Service.dll
 E:\Projects\企业人事管理系统\EnterprisePersonnelManagerSystem\EPMS.Service\obj\Debug\netcoreapp2.1\EPMS.Service.pdb
+F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.Service\obj\Debug\netcoreapp2.1\EPMS.Service.csprojAssemblyReference.cache
+F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.Service\obj\Debug\netcoreapp2.1\EPMS.Service.csproj.CoreCompileInputs.cache
+F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.Service\obj\Debug\netcoreapp2.1\EPMS.Service.AssemblyInfoInputs.cache
+F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.Service\obj\Debug\netcoreapp2.1\EPMS.Service.AssemblyInfo.cs
+F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.Service\obj\Debug\netcoreapp2.1\EPMS.Service.dll
+F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.Service\obj\Debug\netcoreapp2.1\EPMS.Service.pdb
+F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.Service\bin\Debug\netcoreapp2.1\EPMS.Service.deps.json
+F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.Service\bin\Debug\netcoreapp2.1\EPMS.Service.dll
+F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.Service\bin\Debug\netcoreapp2.1\EPMS.Service.pdb
+F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.Service\bin\Debug\netcoreapp2.1\EPMS.EF.dll
+F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.Service\bin\Debug\netcoreapp2.1\EPMS.Model.dll
+F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.Service\bin\Debug\netcoreapp2.1\EPMS.EF.pdb
+F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.Service\bin\Debug\netcoreapp2.1\EPMS.Model.pdb
+F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.Service\obj\Debug\netcoreapp2.1\EPMS.Service.csproj.CopyComplete

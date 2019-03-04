@@ -7,15 +7,12 @@ namespace EPMS.Model.Model
     /// <summary>
     /// 职位
     /// </summary>
-    public class Position:BaseModel
+    public class Position : BaseModel
     {
         [StringLength(50)]
         public string Name { get; set; }
 
-        /// <summary>
-        /// 员工信息导航
-        /// </summary>
-        public virtual ICollection<StaffInfo> StaffInfos { get; set; }
+        public int DepartmentId { get; set; }
 
         /// <summary>
         /// 关联部门ID外键

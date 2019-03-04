@@ -11,7 +11,7 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:EPMS.Web.Controllers.AdminController.Edit(EPMS.Model.Dto.Admin.AdminAddOrEditDto,System.Int32)">
+        <member name="M:EPMS.Web.Controllers.AdminController.Edit(EPMS.Model.Dto.Admin.AdminAddOrEditDto,System.String)">
             <summary>
             编辑管理员
             </summary>
@@ -19,7 +19,7 @@
              <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:EPMS.Web.Controllers.AdminController.Delete(System.Int32)">
+        <member name="M:EPMS.Web.Controllers.AdminController.Delete(System.String)">
             <summary>
             删除管理员
             </summary>

@@ -10,8 +10,24 @@ namespace EPMS.Model.Model
     /// 管理员
     /// 
     /// </summary>
-    public class Admin: BaseModel
+    public class Admin
     {
+        public Admin()
+        {
+            CreateTime = DateTime.UtcNow;
+            LastUpTime = null;
+        }
+
+        [Key]
+        public string Id { get; set; }
+        [StringLength(30)]
+        public DateTime CreateTime { get; set; }
+        [StringLength(30)]
+        public DateTime? LastUpTime { get; set; }
+
+        [StringLength(30)]
+        public string Account { get; set; }
+
         [StringLength(50)]
         public string Name { get; set; }
 
@@ -20,7 +36,5 @@ namespace EPMS.Model.Model
 
         [StringLength(255)]
         public string PassWord { get; set; }
-
-        public virtual ICollection<LoginInfo> LoginInfos { get; set; }
     }
 }

@@ -34,7 +34,7 @@ namespace EPMS.Service.Services.AdminService
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<bool> Delete(int id);
+        Task<bool> Delete(string id);
 
         /// <summary>
         /// 编辑管理员
@@ -42,7 +42,7 @@ namespace EPMS.Service.Services.AdminService
         /// <param name="model"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<bool> Edit(AdminAddOrEditDto model, int id);
+        Task<bool> Edit(AdminAddOrEditDto model, string id);
 
         /// <summary>
         /// 分页查询管理员
@@ -56,6 +56,6 @@ namespace EPMS.Service.Services.AdminService
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<ReturnAdminDto> QueryById(int id);
+        Task<ReturnAdminDto> QueryById(string id);
     }
 }

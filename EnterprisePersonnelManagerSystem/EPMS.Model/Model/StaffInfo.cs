@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EPMS.Model.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -9,11 +10,11 @@ namespace EPMS.Model.Model
     /// <summary>
     /// 员工信息
     /// </summary>
-    public class StaffInfo:BaseModel
+    public class StaffInfo : BaseModel
     {
         [StringLength(50)]
         public string Name { get; set; }
-        [StringLength(14)]
+        [StringLength(11)]
         public string Phone { get; set; }
         [StringLength(30)]
         public DateTime EntryTime { get; set; }
@@ -22,17 +23,10 @@ namespace EPMS.Model.Model
         [StringLength(50)]
         public string Email { get; set; }
 
+        public int PositionId { get; set; }
         [ForeignKey("PositionId")]
         public Position Position { get; set; }
 
-        /// <summary>
-        /// 薪资导航
-        /// </summary>
-        public virtual ICollection<Salary> Salarys { get; set; }
-
-        /// <summary>
-        /// 考勤导航
-        /// </summary>
-        public virtual ICollection<Attendance> Attendances { get; set; }
+        public WorkingStatus WorkingStatus { get; set; }
     }
 }

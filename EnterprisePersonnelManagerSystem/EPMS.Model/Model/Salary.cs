@@ -11,16 +11,44 @@ namespace EPMS.Model.Model
     /// </summary>
     public class Salary:BaseModel
     {
-        [StringLength(20)]
+        /// <summary>
+        /// 基本薪资
+        /// </summary>
+        [StringLength(7)]
         public double BasicSalary { get; set; }
-        [StringLength(20)]
+
+        /// <summary>
+        /// 交通补贴
+        /// </summary>
+        [StringLength(7)]
         public double TransportationSubsidy { get; set; }
-        [StringLength(20)]
+
+        /// <summary>
+        /// 餐费补贴
+        /// </summary>
+        [StringLength(7)]
         public double MealSubsidy { get; set; }
-        [StringLength(20)]
+
+        /// <summary>
+        /// 其他补贴
+        /// </summary>
+        [StringLength(7)]
         public double OtherSubsidies { get; set; }
-        [StringLength(20)]
-        public double AttendanceRewardAndPunishment { get; set; }
+
+        /// <summary>
+        /// 奖励
+        /// </summary>
+        [StringLength(7)]
+        public double Reward { get; set; }
+
+        /// <summary>
+        /// 惩罚
+        /// </summary>
+        [StringLength(7)]
+        public double Deduction { get; set; }
+
+
+        public int StaffInfoId { get; set; }
 
         [ForeignKey("StaffInfoId")]
         public StaffInfo StaffInfo { get; set; }
