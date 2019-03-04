@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using EF;
 using EPMS.Model.Dto.Admin;
 using EPMS.Model.Model;
@@ -14,9 +15,11 @@ namespace EPMS.Service.Services.AdminService
     public class AdminService : IAdminService
     {
         private readonly EPMSContext _context;
-        public AdminService(EPMSContext context)
+        private readonly IMapper _mapper;
+        public AdminService(EPMSContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         /// <summary>
@@ -26,11 +29,10 @@ namespace EPMS.Service.Services.AdminService
         /// <returns></returns>
         public async Task<ReturnLoginDto> Login(LoginDto model)
         {
-            var token = MD5Encrypt32(model.NameOrEmail + model.Password + DateTime.Now.ToString());
-            var admin = await _context.Admins.FirstOrDefaultAsync(i =>
-            (i.Email == model.NameOrEmail
-            || i.Name == model.NameOrEmail)
-            && i.PassWord == MD5Encrypt32(model.Password));
+            var token = MD5Encrypt32(model.AccountOrEmail + model.Password + DateTime.Now.ToString());
+            var admin = await _context.Admins.FirstOrDefaultAsync(i => (i.Email == model.AccountOrEmail
+                                                                      || i.Account == model.AccountOrEmail)
+                                                                  && i.PassWord == MD5Encrypt32(model.Password));
             if (admin != null)
             {
                 //如果登陆成功则更新token 然后把用户名和token 一起返回每次操作验证token有效性
@@ -45,9 +47,9 @@ namespace EPMS.Service.Services.AdminService
                 {
                     _context.LoginInfos.Add(new LoginInfo
                     {
-                        Admin = admin,
+                        AdminId = admin.Id,
                         CreateTime = DateTime.Now,
-                        OutTime = DateTime.Now.AddMinutes(30),
+                        OutTime = DateTime.Now.AddMinutes(60),
                         Token = token
                     });
                 }
@@ -69,6 +71,7 @@ namespace EPMS.Service.Services.AdminService
                 _context.Admins.Add(
                     new Admin
                     {
+                        Id = Guid.NewGuid().ToString(),
                         Email = model.Email,
                         Name = model.Name,
                         PassWord = MD5Encrypt32(model.Password)
@@ -124,6 +127,9 @@ namespace EPMS.Service.Services.AdminService
         /// <returns></returns>
         public Task<List<ReturnAdminDto>> Query(SelectAdminDto model)
         {
+            var result = new List<ReturnAdminDto>();
+
+            var admin = _context.Admins.AsNoTracking();
             throw new NotImplementedException();
         }
 
@@ -182,9 +188,9 @@ namespace EPMS.Service.Services.AdminService
         /// </summary>
         /// <param name="adminId"></param>
         /// <returns></returns>
-        public async Task<bool> CheckTokenTimeOut(string email, string token)
+        public async Task<bool> CheckTokenTimeOut(string adminId, string token)
         {
-            var result = await _context.LoginInfos.FirstOrDefaultAsync(i => i.Admin.Email == email && i.OutTime > DateTime.Now && i.Token == token);
+            var result = await _context.LoginInfos.FirstOrDefaultAsync(i => i.AdminId == adminId && i.OutTime > DateTime.Now && i.Token == token);
             return result != null;
         }
 

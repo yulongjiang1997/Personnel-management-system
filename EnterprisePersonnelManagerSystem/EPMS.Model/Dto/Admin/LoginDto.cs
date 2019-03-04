@@ -6,7 +6,7 @@ namespace EPMS.Model.Dto.Admin
 {
     public class LoginDto
     {
-        public string NameOrEmail { get; set; }
+        public string AccountOrEmail { get; set; }
         public string Password { get; set; }
     }
 }

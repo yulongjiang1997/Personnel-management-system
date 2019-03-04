@@ -13,14 +13,14 @@ namespace EPMS.Web.ActionFilter
     public class PermissionActionFillter : IActionFilter
     {
         private readonly IAdminService _service;
-        public  PermissionActionFillter(IAdminService service)
+        public PermissionActionFillter(IAdminService service)
         {
             _service = service;
         }
 
         public async void OnActionExecuted(ActionExecutedContext context)
         {
-            
+
 
 
         }
@@ -29,10 +29,11 @@ namespace EPMS.Web.ActionFilter
         {
             HttpRequest request = context.HttpContext.Request;
             var token = request.Headers["Token"].ToString();
-            var email = request.Headers["UserEmail"].ToString();
-            if (await _service.CheckTokenTimeOut(email, token))
+            var UserId = request.Headers["UserId"].ToString();
+            if (await _service.CheckTokenTimeOut(UserId, token))
             {
-                context.Result = new JsonResult(new ControllerReturnData<object> {
+                context.Result = new JsonResult(new ControllerReturnData<object>
+                {
                     Message = "Error 401 No Access",
                     Success = false,
                 });
