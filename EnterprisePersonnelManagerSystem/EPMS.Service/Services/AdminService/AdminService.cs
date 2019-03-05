@@ -125,12 +125,15 @@ namespace EPMS.Service.Services.AdminService
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public Task<List<ReturnAdminDto>> Query(SelectAdminDto model)
+        public async Task<List<ReturnAdminDto>> Query(SelectAdminDto model)
         {
             var result = new List<ReturnAdminDto>();
 
             var admin = _context.Admins.AsNoTracking();
-            throw new NotImplementedException();
+
+            result = _mapper.Map<List<ReturnAdminDto>>(await admin.ToListAsync());
+
+            return result;
         }
 
         /// <summary>
@@ -138,9 +141,11 @@ namespace EPMS.Service.Services.AdminService
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public Task<ReturnAdminDto> QueryById(string id)
+        public async Task<ReturnAdminDto> QueryById(string id)
         {
-            throw new NotImplementedException();
+            var admin = _context.Admins.FirstOrDefaultAsync(i => i.Id == id);
+
+            return _mapper.Map<ReturnAdminDto>(await admin); ;
         }
 
         /// <summary>
