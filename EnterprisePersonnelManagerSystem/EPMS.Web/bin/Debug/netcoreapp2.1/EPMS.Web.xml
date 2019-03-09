@@ -4,14 +4,14 @@
         <name>EPMS.Web</name>
     </assembly>
     <members>
-        <member name="M:EPMS.Web.Controllers.AdminController.Create(EPMS.Model.Dto.Admin.AdminAddOrEditDto)">
+        <member name="M:EPMS.Web.Controllers.AdminController.Create(EPMS.Model.Dto.Admin.AdminAddDto)">
             <summary>
             添加管理员
             </summary>
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:EPMS.Web.Controllers.AdminController.Edit(EPMS.Model.Dto.Admin.AdminAddOrEditDto,System.String)">
+        <member name="M:EPMS.Web.Controllers.AdminController.Edit(EPMS.Model.Dto.Admin.EditAdminDto,System.String)">
             <summary>
             编辑管理员
             </summary>

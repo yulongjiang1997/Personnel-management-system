@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using AutoMapper;
 using EF;
 using EPMS.Service.Services.AdminService;
 using EPMS.Service.Services.AttendanceService;
@@ -38,7 +39,18 @@ namespace EPMS.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("allow_all", builder =>
+                {
+                    builder.AllowAnyOrigin() //允许任何来源的主机访问
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials();//指定处理cookie
+                });
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddAutoMapper();//注册Automapper
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1", new Info
@@ -48,29 +60,27 @@ namespace EPMS.Web
                     Description = "The EPMS All Web API List",
                     TermsOfService = "None",
                 });
-
                 //Determine base path for the application.  
                 //Set the comments path for the swagger json and ui.  
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, "EPMS.Web.xml");
                 options.IncludeXmlComments(xmlPath);
             });
+            
             services.AddDbContextPool<EPMSContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlServer")));
-            services.AddMvc(options => { options.Filters.Add(typeof(PermissionActionFillter)); });
+            //services.AddMvc(options => { options.Filters.Add(typeof(PermissionActionFillter)); });
 
             #region 依赖注入添加
             services.AddTransient<IAdminService,AdminService>();
-            //services.AddTransient<AttendanceService>();
-           //services.AddTransient<AttendanceTimeSetService>();
-            //services.AddTransient<DepartmentService>();
-           // services.AddTransient<PositionService>();
-           // services.AddTransient<SalaryService>();
-           // services.AddTransient<StaffInfoService>();
             #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+
+            //启动跨域
+            app.UseCors("allow_all");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

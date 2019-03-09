@@ -27,10 +27,10 @@ namespace EPMS.Web.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("Create")]
-        public async Task<IActionResult> Create([FromBody]AdminAddOrEditDto model)
+        public async Task<IActionResult> Create([FromBody]AdminAddDto model)
         {
             var result = new ControllerReturnData<bool>();
-            result.Obj = await _service.Create(model);
+            result.Obj = await _service.CreateAsync(model);
             return Ok(result);
         }
 
@@ -42,9 +42,9 @@ namespace EPMS.Web.Controllers
         /// <returns></returns>
         [HttpPut]
         [Route("Edit")]
-        public async Task<IActionResult> Edit(AdminAddOrEditDto model, string id)
+        public async Task<IActionResult> Edit(EditAdminDto model, string id)
         {
-            var result = await _service.Edit(model, id);
+            var result = await _service.EditAsync(model, id);
             return Ok(result);
         }
 
@@ -57,9 +57,10 @@ namespace EPMS.Web.Controllers
         [Route("Delete")]
         public async Task<IActionResult> Delete(string id)
         {
-            var result = await _service.Delete(id);
+            var result = await _service.DeleteAsync(id);
             return Ok(result);
         }
+
 
         /// <summary>
         /// 管理员登陆
@@ -67,9 +68,10 @@ namespace EPMS.Web.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
+        [Route("Login")]
         public async Task<IActionResult> Login(LoginDto model)
         {
-            var result = await _service.Login(model);
+            var result = await _service.LoginAsync(model);
             return Ok(result);
         }
 

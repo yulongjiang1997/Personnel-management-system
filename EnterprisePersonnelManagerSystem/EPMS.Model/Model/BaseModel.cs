@@ -12,7 +12,7 @@ namespace EPMS.Model.Model
         [StringLength(30)]
         public DateTime CreateTime { get; set; }
         [StringLength(30)]
-        public DateTime? LastUpTime { get; set; }
+        public DateTime LastUpTime { get; set; }
 
         public BaseModel()
         {

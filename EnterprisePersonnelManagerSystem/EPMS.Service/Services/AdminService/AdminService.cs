@@ -27,7 +27,7 @@ namespace EPMS.Service.Services.AdminService
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async Task<ReturnLoginDto> Login(LoginDto model)
+        public async Task<ReturnLoginDto> LoginAsync(LoginDto model)
         {
             var token = MD5Encrypt32(model.AccountOrEmail + model.Password + DateTime.Now.ToString());
             var admin = await _context.Admins.FirstOrDefaultAsync(i => (i.Email == model.AccountOrEmail
@@ -55,7 +55,7 @@ namespace EPMS.Service.Services.AdminService
                 }
                 await _context.SaveChangesAsync();
             }
-            return admin != null ? new ReturnLoginDto { Name = admin.Name, Token = token } : null;
+            return admin != null ? new ReturnLoginDto { UserId = admin.Id, Token = token } : null;
 
         }
 
@@ -64,13 +64,14 @@ namespace EPMS.Service.Services.AdminService
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async Task<bool> Create(AdminAddOrEditDto model)
+        public async Task<bool> CreateAsync(AdminAddDto model)
         {
-            if (await CheckAdminEmail(model.Email))
+            if (await CheckAdminEmailAsync(model.Email))
             {
                 _context.Admins.Add(
                     new Admin
                     {
+                        Account = model.Account,
                         Id = Guid.NewGuid().ToString(),
                         Email = model.Email,
                         Name = model.Name,
@@ -87,7 +88,7 @@ namespace EPMS.Service.Services.AdminService
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public async Task<bool> Delete(string id)
+        public async Task<bool> DeleteAsync(string id)
         {
             var admin = await _context.Admins.FirstOrDefaultAsync(i => i.Id == id);
             if (admin != null)
@@ -103,17 +104,17 @@ namespace EPMS.Service.Services.AdminService
         /// <param name="model"></param>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public async Task<bool> Edit(AdminAddOrEditDto model, string id)
+        public async Task<bool> EditAsync(EditAdminDto model, string id)
         {
             var admin = await _context.Admins.FirstOrDefaultAsync(i => i.Id == id);
             if (admin != null)
             {
-                if (await CheckAdminEmail(model.Email, id))
+                if (await CheckAdminEmailAsync(model.Email, id))
                 {
                     admin.Email = model.Email;
                     admin.LastUpTime = DateTime.Now;
                     admin.Name = model.Name;
-                    admin.PassWord = MD5Encrypt32(model.Password);
+                    // admin.PassWord = MD5Encrypt32(model.Password);
                 }
             }
 
@@ -125,7 +126,7 @@ namespace EPMS.Service.Services.AdminService
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async Task<List<ReturnAdminDto>> Query(SelectAdminDto model)
+        public async Task<List<ReturnAdminDto>> QueryAsync(SelectAdminDto model)
         {
             var result = new List<ReturnAdminDto>();
 
@@ -141,7 +142,7 @@ namespace EPMS.Service.Services.AdminService
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async Task<ReturnAdminDto> QueryById(string id)
+        public async Task<ReturnAdminDto> QueryByIdAsync(string id)
         {
             var admin = _context.Admins.FirstOrDefaultAsync(i => i.Id == id);
 
@@ -153,7 +154,7 @@ namespace EPMS.Service.Services.AdminService
         /// </summary>
         /// <param name="email"></param>
         /// <returns></returns>
-        private async Task<bool> CheckAdminEmail(string email, string id = null)
+        private async Task<bool> CheckAdminEmailAsync(string email, string id = null)
         {
             Admin admin = null;
             if (!string.IsNullOrEmpty(id))
@@ -193,7 +194,7 @@ namespace EPMS.Service.Services.AdminService
         /// </summary>
         /// <param name="adminId"></param>
         /// <returns></returns>
-        public async Task<bool> CheckTokenTimeOut(string adminId, string token)
+        public async Task<bool> CheckTokenTimeOutAsync(string adminId, string token)
         {
             var result = await _context.LoginInfos.FirstOrDefaultAsync(i => i.AdminId == adminId && i.OutTime > DateTime.Now && i.Token == token);
             return result != null;

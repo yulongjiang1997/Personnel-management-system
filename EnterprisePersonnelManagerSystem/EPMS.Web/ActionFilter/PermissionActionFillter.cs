@@ -30,7 +30,7 @@ namespace EPMS.Web.ActionFilter
             HttpRequest request = context.HttpContext.Request;
             var token = request.Headers["Token"].ToString();
             var UserId = request.Headers["UserId"].ToString();
-            if (await _service.CheckTokenTimeOut(UserId, token))
+            if (await _service.CheckTokenTimeOutAsync(UserId, token))
             {
                 context.Result = new JsonResult(new ControllerReturnData<object>
                 {

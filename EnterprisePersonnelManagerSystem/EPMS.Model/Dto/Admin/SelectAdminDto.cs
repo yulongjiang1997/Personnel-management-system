@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EPMS.Model.Dto.Admin
 {
-   public class SelectAdminDto
+    public class SelectAdminDto : SelectBaseDto
     {
     }
 }
