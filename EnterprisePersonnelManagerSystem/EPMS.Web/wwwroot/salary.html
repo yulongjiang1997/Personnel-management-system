@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dream</title>
+    <title>工资明细</title>
     <!-- Bootstrap Styles-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FontAwesome Styles-->
@@ -13,6 +13,8 @@
     <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
     <!-- Custom Styles-->
     <link href="assets/css/custom-styles.css" rel="stylesheet" />
+
+    <link href="assets/css/main.css" rel="stylesheet" />
     <!-- Google Fonts-->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
@@ -37,8 +39,9 @@
                 <!-- /. ROW  -->
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading">
-                               管理员账号信息
+                            <div class="panel-heading" style="display:flex;justify-content:space-between">
+                                <span>工资管理</span>
+                                <button id="addSalaryDetail">添加明细</button>
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
@@ -46,20 +49,17 @@
                                         <thead>
                                             <tr>
                                                 <th>姓名</th>
-                                                <th>账号</th>
-                                                <th>邮箱</th>
-                                                <th>添加时间</th>
-                                                <th>修改时间</th>
+                                                <th>创建时间</th>
+                                                <th>基本薪资</th>
+                                                <th>交通补贴</th>
+                                                <th>餐费补贴</th>
+                                                <th>其他补贴</th>
+                                                <th>奖励</th>
+                                                <th>惩罚</th>
+                                                <th>操作</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Doe</td>
-                                                <td>John15482</td>
-                                                <td>name@site.com</td>
-                                                <th>2019-3-5 17:31:41</th>
-                                                <th>2019-3-5 17:31:44</th>
-                                            </tr>
+                                        <tbody id="contentDetail">
                                         </tbody>
                                     </table>
                                 </div>
@@ -78,11 +78,16 @@
     <!-- jQuery Js -->
     
     
+    <script src="./assets/js/iconfont.js"></script>
     <script src="assets/js/jquery-1.10.2.js"></script>
     <script src="assets/js/sidebar-collapse.js"></script>
     <script src="assets/js/headbar.js"></script>
     <!-- Bootstrap Js -->
     <script src="assets/js/bootstrap.min.js"></script>
+
+    <script src="assets/js/ajax.js"></script>
+    <script src="assets/js/main.js"></script>
+
     <!-- Metis Menu Js -->
     <script src="assets/js/jquery.metisMenu.js"></script>
     <!-- Morris Chart Js -->
@@ -91,6 +96,10 @@
     <!-- Custom Js -->
     <script src="assets/js/custom-scripts.js"></script>
     
+
+
+
+    <script src="assets/js/salary.js"></script>
 
 
 </body>
