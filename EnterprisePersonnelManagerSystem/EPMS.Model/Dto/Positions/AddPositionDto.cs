@@ -6,5 +6,8 @@ namespace EPMS.Model.Dto.Positions
 {
     public class AddPositionDto
     {
+        public string Name { get; set; }
+
+        public int DepartmentId { get; set; }
     }
 }

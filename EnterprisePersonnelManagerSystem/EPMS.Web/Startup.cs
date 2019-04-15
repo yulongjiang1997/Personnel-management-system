@@ -1,10 +1,9 @@
 ﻿using System;
 using System.IO;
 using AutoMapper;
-using EF;
+using EPMSEF;
 using EPMS.Service.Services.AdminService;
 using EPMS.Service.Services.AttendanceService;
-using EPMS.Service.Services.AttendanceTimeSetService;
 using EPMS.Service.Services.DepartmentService;
 using EPMS.Service.Services.PositionService;
 using EPMS.Service.Services.SalaryService;
@@ -17,6 +16,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
+using EPMS.Service.Services.StockService;
+using EPMS.Service.Services.ProductService;
+using EPMS.Service.Services.CompanyScheduleService;
+using EPMS.Service.Services.PersonalScheduleService;
 
 namespace EPMS.Web
 {
@@ -68,9 +71,21 @@ namespace EPMS.Web
             
             services.AddDbContextPool<EPMSContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlServer")));
             //services.AddMvc(options => { options.Filters.Add(typeof(PermissionActionFillter)); });
+            services.AddMvc(options => { options.Filters.Add(typeof(ExceptionFiltering)); });
 
             #region 依赖注入添加
             services.AddTransient<IAdminService,AdminService>();
+            services.AddTransient<IStockService, StockService>();
+            services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IDepartmentService, DepartmentService>();
+            services.AddTransient<IPositionService, PositionService>();
+            services.AddTransient<ISalaryService, SalaryService>();
+            services.AddTransient<IAttendanceService, AttendanceService>();
+            services.AddTransient<IStaffInfoService, StaffInfoService>();
+            services.AddTransient<ICompanyScheduleService, CompanyScheduleService>();
+            services.AddTransient<IPersonalScheduleService, PersonalScheduleService>();
+
+
             #endregion
         }
 
@@ -81,6 +96,12 @@ namespace EPMS.Web
             //启动跨域
             app.UseCors("allow_all");
 
+
+            DefaultFilesOptions defaultFilesOptions = new DefaultFilesOptions();
+            defaultFilesOptions.DefaultFileNames.Clear();
+            defaultFilesOptions.DefaultFileNames.Add("login.html");
+            app.UseDefaultFiles(defaultFilesOptions);
+            app.UseStaticFiles();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

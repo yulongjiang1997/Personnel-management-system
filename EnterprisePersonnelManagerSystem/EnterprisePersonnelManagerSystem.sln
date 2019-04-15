@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EPMS.EF", "EPMS.EF\EPMS.EF.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EPMS.Model", "EPMS.Model\EPMS.Model.csproj", "{8F50C9FD-C2CE-4603-8C7A-4964C4ED2D00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPMS.Service", "EPMS.Service\EPMS.Service.csproj", "{390C4F8B-3EFE-497D-B6BE-3D803F258D01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EPMS.Service", "EPMS.Service\EPMS.Service.csproj", "{390C4F8B-3EFE-497D-B6BE-3D803F258D01}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

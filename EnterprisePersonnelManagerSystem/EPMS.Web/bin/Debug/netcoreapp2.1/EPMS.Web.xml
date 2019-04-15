@@ -11,6 +11,13 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:EPMS.Web.Controllers.AdminController.QueryPaginAsync(EPMS.Model.Dto.Admin.SelectAdminDto)">
+            <summary>
+            分页查询管理员
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="M:EPMS.Web.Controllers.AdminController.Edit(EPMS.Model.Dto.Admin.EditAdminDto,System.String)">
             <summary>
             编辑管理员
@@ -31,6 +38,265 @@
             管理员登陆
             </summary>
             <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.AttendanceController.Create(EPMS.Model.Dto.Attendances.AddAttendanceDto)">
+            <summary>
+            添加考勤记录
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.AttendanceController.OutStock(EPMS.Model.Dto.Attendances.AddOrEditAttendanceTimeDto)">
+            <summary>
+            添加或修改考勤时间
+            </summary>
+            <param name="model"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.AttendanceController.QueryPaginAsync(EPMS.Model.Dto.Attendances.SelectAttendanceDto)">
+            <summary>
+            分页查询考勤记录
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.AttendanceController.GetAttendanceTime">
+            <summary>
+            获取当前考勤时间
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.CompanyScheduleController.Create(EPMS.Model.Dto.CompanySchedules.AddCompanyScheduleDto)">
+            <summary>
+            添加职位信息
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.CompanyScheduleController.OutStock(EPMS.Model.Dto.CompanySchedules.EditCompanyScheduleDto,System.Int32)">
+            <summary>
+            编辑职位信息
+            </summary>
+            <param name="model"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.CompanyScheduleController.QueryPaginAsync(EPMS.Model.Dto.CompanySchedules.SelectCompanyScheduleDto)">
+            <summary>
+            分页查询职位信息
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.CompanyScheduleController.Delete(System.Int32)">
+            <summary>
+            删除职位信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.DepartmentController.Create(EPMS.Model.Dto.Departments.AddDepartmentDto)">
+            <summary>
+            添加部门信息
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.DepartmentController.OutStock(EPMS.Model.Dto.Departments.EditDepartmentDto,System.Int32)">
+            <summary>
+            编辑部门信息
+            </summary>
+            <param name="model"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.DepartmentController.QueryPaginAsync(EPMS.Model.Dto.Departments.SelectDeparmentDto)">
+            <summary>
+            分页查询部门信息
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.DepartmentController.Delete(System.Int32)">
+            <summary>
+            删除部门信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.PersonalScheduleController.Create(EPMS.Model.Dto.PersonalSchedules.AddPersonalScheduleDto)">
+            <summary>
+            添加个人日程
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.PersonalScheduleController.OutStock(EPMS.Model.Dto.PersonalSchedules.EditPersonalScheduleDto,System.Int32)">
+            <summary>
+            编辑个人日程
+            </summary>
+            <param name="model"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.PersonalScheduleController.QueryPaginAsync(EPMS.Model.Dto.PersonalSchedules.SelectPersonalScheduleDto)">
+            <summary>
+            分页查询个人日程
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.PersonalScheduleController.Delete(System.Int32)">
+            <summary>
+            删除个人日程
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.PositionController.Create(EPMS.Model.Dto.Positions.AddPositionDto)">
+            <summary>
+            添加职位信息
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.PositionController.OutStock(EPMS.Model.Dto.Positions.EditPositionDto,System.Int32)">
+            <summary>
+            编辑职位信息
+            </summary>
+            <param name="model"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.PositionController.QueryPaginAsync(EPMS.Model.Dto.Positions.SelectPositionDto)">
+            <summary>
+            分页查询职位信息
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.PositionController.Delete(System.Int32)">
+            <summary>
+            删除职位信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.ProductController.Create(EPMS.Model.Dto.Products.AddProductDto)">
+            <summary>
+            添加商品信息
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.ProductController.OutStock(EPMS.Model.Dto.Products.EditProductDto,System.Int32)">
+            <summary>
+            编辑商品信息
+            </summary>
+            <param name="model"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.ProductController.QueryPaginAsync(EPMS.Model.Dto.Products.SelectProductDto)">
+            <summary>
+            分页查询商品信息
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.ProductController.Delete(System.Int32)">
+            <summary>
+            删除商品信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.SalaryController.Create(EPMS.Model.Dto.Salarys.AddSalaryDto)">
+            <summary>
+            添加工资
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.SalaryController.QueryPaginAsync(EPMS.Model.Dto.Salarys.SelectSalaryDto)">
+            <summary>
+            分页查询工资
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.SalaryController.Delete(System.Int32)">
+            <summary>
+            删除工资
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.StaffInfoController.Create(EPMS.Model.Dto.Staffinfos.AddStaffinfoDto)">
+            <summary>
+            添加员工信息
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.StaffInfoController.OutStock(EPMS.Model.Dto.Staffinfos.EditStaffinfoDto,System.Int32)">
+            <summary>
+            编辑员工信息
+            </summary>
+            <param name="model"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.StaffInfoController.QueryPaginAsync(EPMS.Model.Dto.Staffinfos.SelectStaffinfoDto)">
+            <summary>
+            分页查询员工信息
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.StaffInfoController.Delete(System.Int32)">
+            <summary>
+            删除员工信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.StockController.Create(EPMS.Model.Dto.Stocks.AddStockDto)">
+            <summary>
+            入库
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.StockController.InAndOut(EPMS.Model.Dto.Stocks.EditStockDto,System.Int32)">
+            <summary>
+            出入库
+            </summary>
+            <param name="model"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.StockController.QueryPaginAsync(EPMS.Model.Dto.Stocks.SelectStockDto)">
+            <summary>
+            分页查询库存
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.StockController.QueryPaginStockRecordAsync(EPMS.Model.Dto.Stocks.SelectStockAccessDto)">
+            <summary>
+            分页查询进出库明细
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.StockController.Delete(System.Int32)">
+            <summary>
+            删除库存
+            </summary>
+            <param name="id"></param>
             <returns></returns>
         </member>
         <member name="T:EPMS.Web.Startup">

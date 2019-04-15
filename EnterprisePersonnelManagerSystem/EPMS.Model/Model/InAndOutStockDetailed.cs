@@ -6,7 +6,7 @@ using System.Text;
 
 namespace EPMS.Model.Model
 {
-    public class InAndOutStockDetailed:BaseModel
+    public class InAndOutStockDetailed : BaseModel
     {
 
         /// <summary>
@@ -21,6 +21,8 @@ namespace EPMS.Model.Model
         /// 进出库类型
         /// </summary>
         public InAndOutStockType InAndOutStockType { get; set; }
+
+        public int SurplusStock { get; set; }
 
 
         /// <summary>

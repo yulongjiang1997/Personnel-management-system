@@ -1,0 +1,12 @@
+F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.EF\obj\Debug\netcoreapp2.1\EPMS.EFContext.csprojAssemblyReference.cache
+F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.EF\obj\Debug\netcoreapp2.1\EPMS.EFContext.csproj.CoreCompileInputs.cache
+F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.EF\obj\Debug\netcoreapp2.1\EPMS.EFContext.AssemblyInfoInputs.cache
+F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.EF\obj\Debug\netcoreapp2.1\EPMS.EFContext.AssemblyInfo.cs
+F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.EF\bin\Debug\netcoreapp2.1\EPMS.EFContext.deps.json
+F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.EF\bin\Debug\netcoreapp2.1\EPMS.EFContext.dll
+F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.EF\bin\Debug\netcoreapp2.1\EPMS.EFContext.pdb
+F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.EF\bin\Debug\netcoreapp2.1\EPMS.Model.dll
+F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.EF\bin\Debug\netcoreapp2.1\EPMS.Model.pdb
+F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.EF\obj\Debug\netcoreapp2.1\EPMS.EFContext.csproj.CopyComplete
+F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.EF\obj\Debug\netcoreapp2.1\EPMS.EFContext.dll
+F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.EF\obj\Debug\netcoreapp2.1\EPMS.EFContext.pdb

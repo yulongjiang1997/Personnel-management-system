@@ -14,8 +14,9 @@ namespace EPMS.Model.Model
     {
         public Admin()
         {
-            CreateTime = DateTime.UtcNow;
-            LastUpTime = null;
+            CreateTime = DateTime.Now;
+            LastUpTime = DateTime.Now;
+            IsSuperAdmin = false;
         }
 
         [Key]
@@ -36,5 +37,7 @@ namespace EPMS.Model.Model
 
         [StringLength(255)]
         public string PassWord { get; set; }
+
+        public bool IsSuperAdmin { get; set; }
     }
 }

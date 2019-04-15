@@ -4,7 +4,8 @@ using System.Text;
 
 namespace EPMS.Model.Dto.Positions
 {
-    public class SelectPositionDto
+    public class SelectPositionDto:SelectBaseDto
     {
+        public int? DepartmentId { get; set; }
     }
 }

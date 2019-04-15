@@ -27,10 +27,24 @@ namespace EPMS.Web.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("Create")]
-        public async Task<IActionResult> Create([FromBody]AdminAddDto model)
+        public async Task<IActionResult> Create(AdminAddDto model)
         {
-            var result = new ControllerReturnData<bool>();
-            result.Obj = await _service.CreateAsync(model);
+            var result = await _service.CreateAsync(model);
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// 分页查询管理员
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("QueryPagin")]
+        public async Task<IActionResult> QueryPaginAsync(SelectAdminDto model)
+        {
+
+            var result = await _service.QueryAsync(model);
+
             return Ok(result);
         }
 

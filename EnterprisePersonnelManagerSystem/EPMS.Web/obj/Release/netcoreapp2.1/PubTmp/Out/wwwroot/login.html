@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>登录</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/login.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+	<script src="assets/js/login.js"></script>
+	<script src="https://lib.baomitu.com/vue/2.6.8/vue.js"></script>
+	<script src="assets/js/jquery-1.10.2.js"></script>
+	<script src="assets/js/ajax.js"></script>
+</head>
+
+<body>
+
+	<div class="login">
+		<h1>管理员登录</h1>
+		<input type="text" id="account" placeholder="Username" required="required" />
+		<input type="password" id="password" placeholder="Password" required="required" />
+		<button type="button" class="btn btn-primary btn-block btn-large" v-on:click="login">登录</button>
+	</div>
+</body>
+
+</html>
+
+<script>
+	var login = new Vue({
+		el: '.login',
+		methods: {
+			login: function () {
+				var url = "/api/Admin/Login"
+				var data = {
+					accountOrEmail: $("#account").val(),
+					password: $("#password").val()
+				}
+				util.ajaxPost(data, url).then(res => {
+					if (res.result) {
+					localStorage.clear();
+					localStorage.setItem("userId", res.result.userId);
+					localStorage.setItem("token", res.result.token);
+					localStorage.setItem("userName", res.result.userName);
+					localStorage.setItem("check", res.result.isSuperAdmin);//是否超级管理员
+					location.href = "index.html";
+					}
+					else{
+						alert("账号或密码错误，登录失败")
+					}
+				}).catch(err => {
+					console.log(err)
+				})
+			}
+		}
+	})
+</script>

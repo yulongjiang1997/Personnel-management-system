@@ -1,7 +1,7 @@
 ﻿using EPMS.Model.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace EF
+namespace EPMSEF
 {
     public class EPMSContext : DbContext
     {
@@ -24,5 +24,6 @@ namespace EF
         public DbSet<Stock> Stocks { get; set; }
         public DbSet<InAndOutStockDetailed> InAndOutStockDetaileds { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<StockOperationRecords> StockOperationRecordss { get; set; }
     }
 }

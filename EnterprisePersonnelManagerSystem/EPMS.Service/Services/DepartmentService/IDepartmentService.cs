@@ -29,13 +29,13 @@ namespace EPMS.Service.Services.DepartmentService
         /// <param name="model"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<bool> EditAsync(EditDepartmentDto model, int id);
+        Task<ReturnData<bool>> EditAsync(EditDepartmentDto model, int id);
 
         /// <summary>
         /// 分页查询部门
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<List<ReturnDepartmentDto>> QueryAsync(SelectDeparmentDto model);
+        Task<ReturnPagin<List<ReturnDepartmentDto>>> QueryAsync(SelectDeparmentDto model);
     }
 }

@@ -37,10 +37,17 @@
 					password: $("#password").val()
 				}
 				util.ajaxPost(data, url).then(res => {
-					localStorage.clear()
-					localStorage.setItem("userId", res.userId)
-					localStorage.setItem("token", res.token)
-					location.href = "index.html"
+					if (res.result) {
+					localStorage.clear();
+					localStorage.setItem("userId", res.result.userId);
+					localStorage.setItem("token", res.result.token);
+					localStorage.setItem("userName", res.result.userName);
+					localStorage.setItem("check", res.result.isSuperAdmin);//是否超级管理员
+					location.href = "index.html";
+					}
+					else{
+						alert("账号或密码错误，登录失败")
+					}
 				}).catch(err => {
 					console.log(err)
 				})

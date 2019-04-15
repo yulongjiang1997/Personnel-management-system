@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using EF;
+using EPMSEF;
 using EPMS.Model.Dto;
 using EPMS.Model.Dto.Departments;
 using EPMS.Model.Model;
@@ -50,27 +50,41 @@ namespace EPMS.Service.Services.DepartmentService
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<bool> EditAsync(EditDepartmentDto model, int id)
+        public async Task<ReturnData<bool>> EditAsync(EditDepartmentDto model, int id)
         {
+            var result = new ReturnData<bool>();
             var departments = await _context.Departments.FirstOrDefaultAsync(i => i.Id == id);
             if (departments != null)
             {
-                _context.Departments.Remove(departments);
+                var deparment = await _context.Departments.FirstOrDefaultAsync(i => i.Name == model.Name);
+                if (deparment != null)
+                {
+                    result.Message = "已存在相同名称部门，修改失败";
+                    result.Result = false;
+                    result.Success = true;
+                    return result;
+                }
+                departments.Name = model.Name;
             }
-            return await _context.SaveChangesAsync() > 0;
+            result.Result = await _context.SaveChangesAsync() > 0;
+            return result;
         }
 
-        public async Task<List<ReturnDepartmentDto>> QueryAsync(SelectDeparmentDto model)
+        public async Task<ReturnPagin<List<ReturnDepartmentDto>>> QueryAsync(SelectDeparmentDto model)
         {
+            var result = new ReturnPagin<List<ReturnDepartmentDto>>();
             var departments = _context.Departments.AsNoTracking();
-
-            return await departments.Select(i => new ReturnDepartmentDto()
+            result.Items = await departments.Select(i => new ReturnDepartmentDto()
             {
                 CreateTime = i.CreateTime,
                 Id = i.Id,
                 LastUpTime = i.LastUpTime,
                 Name = i.Name
             }).ToListAsync();
+            result.Page = model.Page;
+            result.Number = model.Number;
+            result.Count = result.Items.Count;
+            return result;
         }
     }
 }

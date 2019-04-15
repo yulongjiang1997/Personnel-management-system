@@ -17,7 +17,7 @@ namespace EPMS.Model.Model
         public BaseModel()
         {
             CreateTime = DateTime.Now;
-            LastUpTime = null;
+            LastUpTime = DateTime.Now;
         }
     }
 }

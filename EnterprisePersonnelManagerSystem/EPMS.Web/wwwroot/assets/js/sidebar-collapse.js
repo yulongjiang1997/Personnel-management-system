@@ -1,67 +1,79 @@
 var html = `<ul class="nav" id="main-menu">
 
 <li>
-    <a href="adminInfo.html"><i class="fa fa-edit"></i>管理员列表 </a>
+    <a id="index" href="index.html"><i class="fa fa-dashboard"></i>仪表盘</a>
 </li>
 <li>
-    <a href="userInfo.html"><i class="fa fa-desktop"></i>员工管理</a>
+    <a href="adminInfo.html" id="adminInfo"><i class="fa fa-edit"></i>管理员列表</a>
 </li>
 <li>
-    <a class="active-menu" href="index.html"><i class="fa fa-dashboard"></i>仪表盘</a>
-</li>
-<li>
-    <a href="ui-elements.html"><i class="fa fa-desktop"></i>UI Elements</a>
-</li>
-<li>
-    <a href="chart.html"><i class="fa fa-bar-chart-o"></i>Charts</a>
-</li>
-<li>
-    <a href="tab-panel.html"><i class="fa fa-qrcode"></i>Tabs & Panels</a>
-</li>
-
-<li>
-    <a href="table.html"><i class="fa fa-table"></i>Responsive Tables</a>
-</li>
-<li>
-    <a href="form.html"><i class="fa fa-edit"></i>Forms </a>
-</li>
-
-
-<li>
-    <a href="#"><i class="fa fa-sitemap"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-    <ul class="nav nav-second-level">
+    <a href="#"><i class="fa fa-sitemap"></i>职工管理<span class="fa arrow"></span></a>
+    <ul class="nav nav nav-second-level collapse in">
         <li>
-            <a href="#">Second Level Link</a>
+            <a href="userInfo.html" id="userInfo"  id="admin">员工基本信息</a>
         </li>
         <li>
-            <a href="#">Second Level Link</a>
+            <a href="deparment.html" id="deparment"  id="admin">部门管理</a>
         </li>
         <li>
-            <a href="#">Second Level Link<span class="fa arrow"></span></a>
-            <ul class="nav nav-third-level">
-                <li>
-                    <a href="#">Third Level Link</a>
-                </li>
-                <li>
-                    <a href="#">Third Level Link</a>
-                </li>
-                <li>
-                    <a href="#">Third Level Link</a>
-                </li>
-
-            </ul>
-
+            <a href="position.html" id="position"  id="admin">职位管理</a>
+        </li>
+        <li>
+            <a href="attendance.html" id="attendance"  id="admin">考勤记录查询</a>
+        </li>
+        <li>
+            <a href="attendanceTime.html"  id="attendanceTime"  id="admin">考勤时间管理</a>
         </li>
     </ul>
 </li>
 <li>
-    <a href="empty.html"><i class="fa fa-fw fa-file"></i> Empty Page</a>
+    <a href="salary.html" id="salary"><i class="fa fa-desktop"></i>工资管理</a>
 </li>
+<li>
+    <a href="#"><i class="fa fa-bar-chart-o"></i>商品管理<span class="fa arrow"></span></a>
+    <ul class="nav nav nav-second-level collapse in">
+        <li>
+            <a href="product.html"  id="product"  id="admin">商品信息</a>
+        </li>
+        <li>
+            <a href="stock.html" id="stock"   id="admin">库存管理</a>
+        </li>
+        <li>
+            <a href="stockInAndOutRecord.html" id="stockInAndOutRecord"  id="admin">出入库明细</a>
+        </li>
+    </ul>
+</li>
+<li>
+    <a href="#" ><i class="fa fa-qrcode"></i>日程管理<span class="fa arrow"></span></a>
+    <ul class="nav nav nav-second-level collapse in">
+    <li>
+        <a href="personalSchedule.html" id="personalSchedule" >员工日程</a>
+    </li>
+    <li>
+        <a href="companySchedule.html" id="companySchedule" >公司日程</a>
+    </li>
+</ul>
+</li>
+
+<!--li>
+    <a href="log.html" id="log"><i class="fa fa-table"></i>日志记录</a>
+</li-->
 </ul>`
 
-
 $(function () {
-    console.log("123122311232")
-    $(".sidebar-collapse").append(html)
-    //func(xxx)//执行函数
-});  
+  $('.sidebar-collapse').append(html)
+  var name=pageName();
+  $(`.nav #${name}`).addClass("active-menu")
+// func(xxx)//执行函数
+})
+
+
+
+
+function pageName()
+{
+  var a = location.href;
+  var b = a.split("/");
+  var c = b.slice(b.length-1, b.length).toString(String).split(".");
+  return c.slice(0, 1);
+}

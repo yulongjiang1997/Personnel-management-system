@@ -13,6 +13,6 @@ namespace EPMS.Model.Model
         public Product Product { get; set; }
 
 
-        public int SurplusStock { get; set; }
+        public int Number { get; set; }
     }
 }

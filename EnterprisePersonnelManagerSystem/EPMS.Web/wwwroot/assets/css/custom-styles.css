@@ -212,6 +212,21 @@ color: #8d8888;
 footer p{
 font-size: 14px;
 }
+
+
+.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+  }
+
+ .cPointer{
+     cursor: pointer;
+ }
+
+
 /*----------------------------------------------
     MENU STYLES    
 ------------------------------------------------*/
@@ -326,9 +341,7 @@ padding-top: 4px;
 .sidebar-collapse > .nav > li {
 	border-bottom: 1px solid rgba(107, 108, 109, 0.19);
 }
-ul.nav.nav-second-level.collapse.in {
-background: #172D44;
-}
+
 .sidebar-collapse .nav > li > a:hover,
 .sidebar-collapse .nav > li > a:focus {
 	 

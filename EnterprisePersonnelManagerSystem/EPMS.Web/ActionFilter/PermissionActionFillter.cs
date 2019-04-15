@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace EPMS.Web.ActionFilter
 {
-    public class PermissionActionFillter : IActionFilter
+    public class PermissionActionFillter : ActionFilterAttribute
     {
         private readonly IAdminService _service;
         public PermissionActionFillter(IAdminService service)
@@ -25,19 +25,21 @@ namespace EPMS.Web.ActionFilter
 
         }
 
-        public async void OnActionExecuting(ActionExecutingContext context)
+        public  void OnActionExecuting(ActionExecutingContext context)
         {
             HttpRequest request = context.HttpContext.Request;
             var token = request.Headers["Token"].ToString();
             var UserId = request.Headers["UserId"].ToString();
-            if (await _service.CheckTokenTimeOutAsync(UserId, token))
+            if (_service.CheckTokenTimeOutAsync(UserId, token))
             {
                 context.Result = new JsonResult(new ControllerReturnData<object>
                 {
                     Message = "Error 401 No Access",
                     Success = false,
                 });
+                context.HttpContext.Response.StatusCode = 401;
             }
+            base.OnActionExecuting(context);
         }
     }
 }

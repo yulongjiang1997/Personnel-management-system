@@ -1,4 +1,5 @@
-﻿using EPMS.Model.Dto.Admin;
+﻿using EPMS.Model.Dto;
+using EPMS.Model.Dto.Admin;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,28 +14,28 @@ namespace EPMS.Service.Services.AdminService
         /// </summary>
         /// <param name="adminId"></param>
         /// <returns></returns>
-        Task<bool> CheckTokenTimeOutAsync(string email,string token);
+        bool CheckTokenTimeOutAsync(string email,string token);
 
         /// <summary>
         /// 登陆
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<ReturnLoginDto> LoginAsync(LoginDto model);
+        Task<ReturnData<ReturnLoginDto>> LoginAsync(LoginDto model);
 
         /// <summary>
         /// 添加管理员
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<bool> CreateAsync(AdminAddDto model);
+        Task<ReturnData<bool>> CreateAsync(AdminAddDto model);
 
         /// <summary>
         /// 删除管理员
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<bool> DeleteAsync(string id);
+        Task<ReturnData<bool>> DeleteAsync(string id);
 
         /// <summary>
         /// 编辑管理员
@@ -42,7 +43,7 @@ namespace EPMS.Service.Services.AdminService
         /// <param name="model"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<bool> EditAsync(EditAdminDto model, string id);
+        Task<ReturnData<bool>> EditAsync(EditAdminDto model, string id);
 
         /// <summary>
         /// 分页查询管理员
