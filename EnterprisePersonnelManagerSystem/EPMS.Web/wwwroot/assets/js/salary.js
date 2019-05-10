@@ -16,6 +16,7 @@ function initTable () {
       <td class="otherSubsidies">${element.otherSubsidies}元</td>
       <td class="reward">${element.reward}元</td>
       <td class="deduction">${element.deduction}元</td>
+      <td class="totil">${element.basicSalary + element.transportationSubsidy + element.mealSubsidy + element.otherSubsidies + element.reward - element.deduction}元</td>
       
       <td >
         <div style="display:flex;justify-content:space-around">

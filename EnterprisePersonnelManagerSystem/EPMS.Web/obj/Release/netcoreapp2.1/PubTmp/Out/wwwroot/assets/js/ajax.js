@@ -1,6 +1,6 @@
 // var baseUrl = "http://118.24.18.189:8888";
-// var baseUrl = "http://LocalHost:5000";
-var baseUrl = "http://192.168.31.155:5000";
+ //var baseUrl = "http://127.0.0.1:5000";
+var baseUrl = "http://192.168.1.6:5000";
 
 var util = (function () {
     return {
@@ -16,11 +16,11 @@ var util = (function () {
                     },
                     data: JSON.stringify(data),
                     success(res) {
-                        console.log("123")
+                        console.log("POSTSuccess")
                         resolve(res)
                     },
                     error: function (err) {
-                        console.log("3456")
+                        console.log("POSTerror")
                         reject(err)
                     }
 
@@ -28,9 +28,26 @@ var util = (function () {
             })
         },
 
-        ajaxGet() {
-            $.ajax({
+        ajaxGet(url) {
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                    url: baseUrl + url,
+                    type: "GET",
+                    contentType: "application/json",
+                    handers: {
+                        token: localStorage.getItem('token') || '',
+                        userId: localStorage.getItem('userId') || ''
+                    },
+                    success(res) {
+                        console.log("GETSuccess")
+                        resolve(res)
+                    },
+                    error: function (err) {
+                        console.log("GETSuccesserror")
+                        reject(err)
+                    }
 
+                })
             })
         },
 
@@ -45,11 +62,11 @@ var util = (function () {
                         userId: localStorage.getItem('userId') || ''
                     },
                     success(res) {
-                        console.log("123")
+                        console.log("DeleteSuccess")
                         resolve(res)
                     },
                     error: function (err) {
-                        console.log("3456")
+                        console.log("errorSuccess")
                         reject(err)
                     }
 

@@ -1,8 +1,8 @@
 var html = `<ul class="nav" id="main-menu">
 
-<li>
+<!--li>
     <a id="index" href="index.html"><i class="fa fa-dashboard"></i>仪表盘</a>
-</li>
+</li-->
 <li>
     <a href="adminInfo.html" id="adminInfo"><i class="fa fa-edit"></i>管理员列表</a>
 </li>

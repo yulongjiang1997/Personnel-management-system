@@ -24,4 +24,3 @@ F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerS
 F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.Model\obj\Debug\netcoreapp2.1\EPMS.Model.AssemblyInfo.cs
 F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.Model\obj\Debug\netcoreapp2.1\EPMS.Model.dll
 F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.Model\obj\Debug\netcoreapp2.1\EPMS.Model.pdb
-F:\Projects\毕业设计\Personnel-management-system\EnterprisePersonnelManagerSystem\EPMS.Model\obj\Debug\netcoreapp2.1\EPMS.Model.csprojAssemblyReference.cache
